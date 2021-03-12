@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>OCLint安装与使用 | Blackchena</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/normalize.css/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/purecss/build/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="//cdn.jsdelivr.net/npm/clipboard/dist/clipboard.min.js"></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.js"></script><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/codeseven/toastr/build/toastr.min.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">OCLint安装与使用</h1><a id="logo" href="/.">Blackchena</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Home</i></a><a href="/archives/"><i class="fa fa-archive"> Archive</i></a><a href="/about/"><i class="fa fa-user"> About</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">OCLint安装与使用</h1><div class="post-meta">2021-03-12</div><div class="post-content"><h1 id="OCLint安装与使用"><a href="#OCLint安装与使用" class="headerlink" title="OCLint安装与使用"></a>OCLint安装与使用</h1><h2 id="安装OCLint"><a href="#安装OCLint" class="headerlink" title="安装OCLint"></a>安装OCLint</h2><p>官方提供了2种安装方法：</p>
+<h3 id="1-Release包安装："><a href="#1-Release包安装：" class="headerlink" title="1.Release包安装："></a>1.Release包安装：</h3><p>对应的Release包在<a target="_blank" rel="noopener" href="https://github.com/oclint/oclint/releases">这里下载</a>，下载完成后将包目录下的bin文件夹路径添加到我们的PATH环境变量中<a target="_blank" rel="noopener" href="https://docs.oclint.org/en/stable/intro/installation.html#option-1-directly-adding-to-path">参考官方文档这个一段配置</a></p>
+<h3 id="2-Homebrew-Tap安装"><a href="#2-Homebrew-Tap安装" class="headerlink" title="2.Homebrew Tap安装"></a>2.Homebrew Tap安装</h3><p>安装命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew tap oclint&#x2F;formulae</span><br><span class="line">$ brew install oclint</span><br></pre></td></tr></table></figure>
+<p>更新命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew update </span><br><span class="line">$ brew upgrade oclint</span><br></pre></td></tr></table></figure>
+<p>如果对brew tap感兴趣可以看一下<a target="_blank" rel="noopener" href="https://docs.brew.sh/Taps">官方这篇文章</a>，个人认为如果以<code>brew tap ocline/formulae</code>这种写法，最终会到这里<a target="_blank" rel="noopener" href="https://github.com/oclint/homebrew-formulae">https://github.com/oclint/homebrew-formulae</a>去寻找安装的配置文件<a target="_blank" rel="noopener" href="https://github.com/oclint/homebrew-formulae/blob/master/Formula/oclint.rb">https://github.com/oclint/homebrew-formulae/blob/master/Formula/oclint.rb</a>，类似于Cocoapods找Podspec文件来配置安装三方库原理。</p>
+<h2 id="安装依赖的三方工具"><a href="#安装依赖的三方工具" class="headerlink" title="安装依赖的三方工具"></a>安装依赖的三方工具</h2><p><a target="_blank" rel="noopener" href="https://github.com/xcpretty/xcpretty">xcpretty</a><br>is a fast and flexible formatter for xcodebuild<br>(用于对xcodebuild的输出进行格式化 )  <strong>当前使用的方式</strong> </p>
+<p>其实除了xcpretty，xctool和oclint-xcodebuild也能对xcodebuild的输出进行格式化，搭配OCLint的具体使用方式请参考：  </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.oclint.org/en/stable/manual/oclint-xcodebuild.html">oclint-xcodebuild Manual</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.oclint.org/en/stable/guide/xctool.html">Using OCLint with xctool</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.oclint.org/en/stable/guide/xcpretty.html">Using OCLint with xcpretty</a></li>
+</ul>
+<blockquote>
+<p>Tips：终端安装过程中最好设置终端代理(不然很可能更新或下载失败)，我的Mac电脑是这样设置的:<code>export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087</code><br>这里的ip和port号可以在这里查看(前提你的电脑已经连接了代理才会有这些设置选项)：系统偏好设置-&gt;网络-&gt;WIFI栏高级-&gt;代理栏查看对应的网页代理(HTTP)、安全网页代理(HTTPS);</p>
+</blockquote>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><blockquote>
+<p>使用过程中用到了Aggregate Target，其作用可以<a target="_blank" rel="noopener" href="https://pewpewthespells.com/blog/managing_xcode.html#target-agg">参考这里</a></p>
+</blockquote>
+<ul>
+<li><p>创建一个Aggregate Target</p>
+</li>
+<li><p>在Build Phase中新增Run Script内容如下：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export LC_CTYPE&#x3D;en_US.UTF-8</span><br><span class="line">cd $&#123;SRCROOT&#125;</span><br><span class="line">xcodebuild -scheme xxx -workspace xxx.xcworkspace  clean &amp;&amp; xcodebuild -scheme xxx -workspace xxx.xcworkspace -configuration Debug | xcpretty -r json-compilation-database -o compile_commands.json &amp;&amp; oclint-json-compilation-database -exclude Pods -- -report-type xcode</span><br></pre></td></tr></table></figure></li>
+<li><p>开始build</p>
+</li>
+</ul>
+<p><strong>错误一：</strong>注意如果不加<code>export LC_CTYPE=en_US.UTF-8</code>会报这样的错误：</p>
+<blockquote>
+<p>/Library/Ruby/Gems/2.6.0/gems/xcpretty-0.3.0/lib/xcpretty/parser.rb:434:in <code>===&#39;: invalid byte sequence in US-ASCII (ArgumentError)</code></p>
+</blockquote>
+<p><strong>错误二：</strong>遇到了这样的错误：</p>
+<blockquote>
+<p>xcpretty: command not found</p>
+</blockquote>
+<ul>
+<li><p><strong>解决步骤：</strong></p>
+<ul>
+<li><p>在Xcode Script中打印PATH发现其中没有xcpretty所在的bin路径，但是在Terminal打印是有该bin路径的  </p>
+</li>
+<li><p>在Script第一行加入<code>export PATH=&quot;$PATH:~/.rvm/gems/ruby-2.5.1/bin&quot;</code></p>
+<blockquote>
+<p>报错：ruby_executable_hooks: No such file or directory  </p>
+</blockquote>
+</li>
+<li><p>把上述路径换成<code>export PATH=&quot;$PATH:$HOME/.rvm/gems/ruby-2.5.1/bin&quot;</code></p>
+<blockquote>
+<p>报错： /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0/rubygems.rb:283:in <code>find_spec_for_exe&#39;: can&#39;t find gem xcpretty (&gt;= 0.a) with executable xcpretty (Gem::GemNotFoundException)</code></p>
+</blockquote>
+</li>
+<li><p>由于我的Mac安装了rvm环境，最终发现我<strong>rvm</strong>用的<strong>ruby</strong>版本和Mac自带的ruby<strong>版本有差异</strong>，而且Xcode用的是Mac自带的ruby版本，我这里想了两种解决方法：</p>
+<ul>
+<li>因为Xcode用的Mac自带ruby版本，rvm use system后重新安装xcpretty，同时删除上面配置环境变量PATH那一行（成功）</li>
+<li>在Run Script中第一行加入rvm use ruby-2.5.1，这里用的ruby版本号根据自己的xcpretty装到哪个版本的ruby环境来设置（报错rvm: command not found 看来在Run Script中设置ruby 版本没有作用）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>错误三：</strong>错误如下：</p>
+<blockquote>
+<p>oclint: error: compilation contains multiple jobs:</p>
+</blockquote>
+<ul>
+<li><p><strong>解决步骤</strong>  </p>
+<ul>
+<li><p>设置Pods中所有Target的COMPILER_INDEX_STORE_ENABLE为NO方法在Podfile的target ‘xxx’ do中添加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">post_install do |installer|</span><br><span class="line">    installer.pods_project.targets.each do |target|</span><br><span class="line">        target.build_configurations.each do |config|</span><br><span class="line">            config.build_settings[&#39;COMPILER_INDEX_STORE_ENABLE&#39;] &#x3D; &quot;NO&quot;</span><br><span class="line">        end</span><br><span class="line">    end</span><br><span class="line">  end</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置主工程的project配置文件中Build Setting中的COMPILER_INDEX_STORE_ENABLE字段为NO，因为target中改配置项继承自project，所以不用单独设置。 <a target="_blank" rel="noopener" href="https://github.com/oclint/oclint/issues/462">参考</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>在实际应用中发现OCLint自带的一些Rule我们用不上及需要改变一些Rule的Threshold<br><strong>1. 禁用相关的Rule，一般我们可以通过这两种方式禁用：</strong></p>
+<ul>
+<li><p>Command Line 命令行参数:<br><code>-disable-rule &lt;rule name&gt;</code><br>具体的rule name可以<a target="_blank" rel="noopener" href="http://docs.oclint.org/en/stable/rules/index.html">在此查看</a><br><code>-disable-rule GotoStatement -disable-rule LongMethod</code>(多条禁用规则的写法)</p>
+</li>
+<li><p>Configuration File 配置文件根据作用域不同有这些文件/etc/oclint和~/.oclint和.oclint:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">disable-rules:</span><br><span class="line">  - GotoStatement</span><br><span class="line">  - LongMethod</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>2. 改变Rule的Threshold：</strong></p>
+<ul>
+<li><p>Command Line 命令行参数:<br><code>-rc SHORT_VARIABLE_NAME=2  -rc NCSS_METHOD=50</code><br>具体的threshold name可以<a target="_blank" rel="noopener" href="https://docs.oclint.org/en/stable/howto/thresholds.html">在此查看</a>，对应的解释<a target="_blank" rel="noopener" href="https://oclint-docs.readthedocs.io/en/stable/rules/size.html">在这里</a></p>
+</li>
+<li><p>Configuration File 配置文件：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rule-configurations:</span><br><span class="line">  - key: SHORT_VARIABLE_NAME</span><br><span class="line">    value: 3</span><br><span class="line">  - key: NCSS_METHOD</span><br><span class="line">    value: 50</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li>构建Aggregate target时会有很多issue，这些issue都来自于主工程构建时的warning，而且不能通过issue列表直接定位到工程中文件，即便设置了-exclude Pods这些issue任然包含Pods中文件的issue，最后我修复了工程中的所有Warning大部分解决了该问题。</li>
+<li>所有的OCLint提供的Rules在该路径下：<code>/usr/local/Cellar/oclint/20.11/lib/oclint</code>  </li>
+<li>这篇文章介绍了警告的一些屏蔽方法-<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3e8b8331ffdb">Warning处理</a></li>
+<li>这里也总结了OCLint使用过程中的一些问题<a href="">https://gist.github.com/ryuichis/755e6297aec13c900cdf#gistcomment-2860456</a></li>
+</ul>
+</div><div class="tags"></div><div class="post-nav"><a class="next" href="/2021/03/09/%E6%9F%A5%E7%9C%8Bllvm%E7%89%88%E6%9C%AC%E5%8F%B7/">查看llvm版本号</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://example.com"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2021/03/12/OCLint%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">OCLint安装与使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/03/09/%E6%9F%A5%E7%9C%8Bllvm%E7%89%88%E6%9C%AC%E5%8F%B7/">查看llvm版本号</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/03/08/Flutter%E4%B8%8EiOS%E5%8E%9F%E7%94%9F%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F/">Flutter与iOS原生通信方式</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/03/03/iOS%E4%B8%AD%E6%B2%A1%E6%9C%89backing-store%E6%9C%BA%E5%88%B6/">iOS中没有backing store机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/02/25/%E6%90%AD%E5%BB%BAGollum/">Gollum+GitHub搭建个人Wiki</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/02/25/Hexo-Github%E6%90%AD%E5%BB%BA/">Hexo_Github搭建</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/02/25/hello-world/">Hello World</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2021 <a href="/." rel="nofollow">Blackchena.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox/dist/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
